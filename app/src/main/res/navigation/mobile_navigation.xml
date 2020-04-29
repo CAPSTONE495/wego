@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.wego.ui.home.HomeFragment"
+        android:label="@string/title_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_driver"
+        android:name="com.example.wego.ui.Drive.DriveFragment"
+        android:label="@string/title_mydrive"
+        tools:layout="@layout/fragment_drive" />
+
+    <fragment
+        android:id="@+id/navigation_passenger"
+        android:name="com.example.wego.ui.Ride.RideFragment"
+        android:label="@string/title_Ride"
+        tools:layout="@layout/fragment_ride" />
+</navigation>

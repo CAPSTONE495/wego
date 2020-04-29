@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">WeGo</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_mydrive">My Drive</string>
+    <string name="title_Ride">My Ride</string>
+    <string name="ride_where">Where&#160;:</string>
+    <string name="ride_from">From&#160;&#160;:</string>
+    <string name="ride_Time">When&#160;&#160;:</string>
+    <string name="isDriving">&#160; is Driving</string>
+    <string name="ride_request">Request</string>
+    <string name="ride_cancel">Cancel</string>
+
+
+
+
+</resources>
