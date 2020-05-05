@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
 
         //Temporary fix ***
-        //signOut();
+        signOut();
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
 
         // Set the dimensions of the sign-in button.
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .build();
 
         signInButton = findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+        //signInButton.setSize(SignInButton.SIZE_STANDARD);
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
@@ -102,11 +102,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //updateUI(account);
 
             System.out.println(account.getEmail());
-            System.out.println(account.getGivenName());
-            System.out.println(account.getFamilyName());
             System.out.println(account.getId());
-            //create account:
-            //pi.cs.oswego.edu:16016/Profile/addAccount?email="blah@gmail.com&firstName="Ricky"&lastName="Micky"
+            System.out.println(account.getIdToken());
             startActivity(new Intent(MainActivity.this, Home.class));
 
         } catch (ApiException e) {
@@ -117,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void signOut() {
+    private void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override

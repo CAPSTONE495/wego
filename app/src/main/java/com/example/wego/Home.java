@@ -58,7 +58,7 @@ public class Home extends AppCompatActivity {
                         Toast.makeText(Home.this, "Settings",Toast.LENGTH_SHORT).show();break;
                     case R.id.mycart:
                         Toast.makeText(Home.this, "My Cart",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Home.this, MainActivity.class));
+                        //startActivity(new Intent(Home.this, MainActivity.class));
                         break;
 
                     default:
