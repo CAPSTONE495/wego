@@ -8,13 +8,20 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wego.DummyData;
 import com.example.wego.R;
+import com.example.wego.ui.RideInfo.ProfileFragment;
+import com.example.wego.ui.RideInfo.RideDetails;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import entity.Ride;
 import wegoconstant.WegoConstatns;
 
@@ -33,6 +40,7 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener
     {
+        CircleImageView profile;
         TextView driver_name;
         TextView from;
         TextView where;
@@ -43,6 +51,7 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
         public ViewHolder(View itemView)
         {
             super(itemView);
+            this.profile = (CircleImageView) itemView.findViewById(R.id.profile);
             this.driver_name = (TextView) itemView.findViewById(R.id.driver_name);
             this.from = (TextView)itemView.findViewById(R.id.text_from);
             this.where = (TextView)itemView.findViewById(R.id.text_where);
@@ -78,6 +87,15 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final Ride ride = rideList.get(position);
         holder.driver_name.setText(ride.getDriver());
+
+        holder.profile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new ProfileFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack("blah").commit();
+        }
+        });
 
         holder.from.setText(ride.getFrom());
 
@@ -120,11 +138,10 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-
-                // Open new intent to show ride details
-                //Toast.makeText( v.getContext(),"Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+            public void onClick(View v){
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment rideDetailsFragment = new RideDetails();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, rideDetailsFragment).addToBackStack("blah").commit();
             }
         });
     }
@@ -140,5 +157,4 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
         //notifyItemRangeChanged(position, getItemCount());
         notifyDataSetChanged();
     }
-
 }

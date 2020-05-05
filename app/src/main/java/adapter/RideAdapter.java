@@ -1,5 +1,7 @@
 package adapter;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
@@ -13,9 +15,12 @@ import android.content.Context;
 
 import com.example.wego.DummyData;
 import com.example.wego.R;
+import com.example.wego.ui.RideInfo.ProfileFragment;
+import com.example.wego.ui.RideInfo.RideDetails;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import entity.Ride;
 import wegoconstant.WegoConstatns;
 
@@ -34,6 +39,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener
     {
+        CircleImageView profile;
         TextView driver_name;
         TextView from;
         TextView where;
@@ -50,7 +56,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
             this.when = (TextView)itemView.findViewById(R.id.text_when);
             this.btnRequest = (Button) itemView.findViewById(R.id.request_button);
             this.btnCancle = (Button) itemView.findViewById(R.id.cancel_button);
-
+            this.profile = (CircleImageView) itemView.findViewById(R.id.profile);
             itemView.setOnClickListener(this);
 
 
@@ -97,6 +103,14 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
             holder.btnRequest.setBackgroundColor(Color.BLUE);
             holder.btnRequest.setEnabled(false);
         }
+        holder.profile.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment myFragment = new ProfileFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, myFragment).addToBackStack("blah").commit();
+            }
+        });
         //holder.btnCancle.setVisibility(View.INVISIBLE);
         holder.btnRequest.setOnClickListener(new View.OnClickListener()
         {
@@ -125,11 +139,10 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-
-                // Open new intent to show ride details
-                //Toast.makeText( v.getContext(),"Item " + position + " is clicked.", Toast.LENGTH_SHORT).show();
+            public void onClick(View v){
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment rideDetailsFragment = new RideDetails();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, rideDetailsFragment).addToBackStack("blah").commit();
             }
         });
     }

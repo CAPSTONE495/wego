@@ -1,19 +1,32 @@
 <resources>
-    <string name="app_name">WeGo</string>
+    <string name="app_name">PickMeUp</string>
     <string name="title_activity_home">Home</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_mydrive">My Drive</string>
     <string name="title_Ride">My Ride</string>
+    <string name="title_profile">Profile</string>
     <string name="ride_where">Where&#160;:</string>
     <string name="ride_from">From&#160;&#160;:</string>
     <string name="ride_Time">When&#160;&#160;:</string>
     <string name="isDriving">&#160; is Driving</string>
+    <string name="isRiding">&#160; is Riding</string>
     <string name="ride_request">Request</string>
     <string name="ride_cancel">Cancel</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
 
+    <string name="home_second">Home Second</string>
 
 
 </resources>

@@ -102,8 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //updateUI(account);
 
             System.out.println(account.getEmail());
+            System.out.println(account.getGivenName());
+            System.out.println(account.getFamilyName());
             System.out.println(account.getId());
-            System.out.println(account.getIdToken());
+            //create account:
+            //pi.cs.oswego.edu:16016/Profile/addAccount?email="blah@gmail.com&firstName="Ricky"&lastName="Micky"
             startActivity(new Intent(MainActivity.this, Home.class));
 
         } catch (ApiException e) {
@@ -114,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void signOut() {
+    public void signOut() {
         mGoogleSignInClient.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override

@@ -1,58 +1,58 @@
-package com.example.wego.ui.Ride;
+package com.example.wego.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wego.DummyData;
+import com.example.wego.Home;
 import com.example.wego.R;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
-import adapter.RideAdapter;
+import adapter.HomeAdapter;
 import entity.Ride;
 import wegoconstant.WegoConstatns;
 
-public class RideFragment extends Fragment {
+public class HomeFragment1 extends Fragment {
     private DrawerLayout dl;
     private ActionBarDrawerToggle t;
     private NavigationView nv;
-    private RideViewModel rideViewModel;
 
     RecyclerView recyclerView;
-    private RideAdapter rideAdapter;
+    private HomeViewModel homeViewModel;
+    private ListView listView;
+    private HomeAdapter rideAdapter;
     ArrayList<Ride> lsitOfRides;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_drive, container, false);
-        recyclerView = (RecyclerView) root.findViewById(R.id.driveRecyclerView);
-        recyclerView.setTag(WegoConstatns.recyclerViewRide);
+        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
+        recyclerView.setTag(WegoConstatns.recyclerViewHome);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        lsitOfRides = new ArrayList<Ride>();
-        lsitOfRides = DummyData.myRideList;
-        rideAdapter = new RideAdapter(lsitOfRides, recyclerView);
+        lsitOfRides = DummyData.rideList;
+        rideAdapter = new HomeAdapter(lsitOfRides, recyclerView);
         recyclerView.setAdapter(rideAdapter);
+
+
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         ActionBar actionbar = activity.getSupportActionBar();
         dl = (DrawerLayout)root.findViewById(R.id.activity_home);

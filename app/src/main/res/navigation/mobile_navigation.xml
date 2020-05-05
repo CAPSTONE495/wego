@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.wego.ui.home.HomeFragment"
+        android:name="com.example.wego.ui.home.HomeFragment1"
         android:label="@string/title_dashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,4 +24,11 @@
         android:name="com.example.wego.ui.Ride.RideFragment"
         android:label="@string/title_Ride"
         tools:layout="@layout/fragment_ride" />
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.example.wego.ui.RideInfo.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/profile_fragment" />
+
 </navigation>
